@@ -20,6 +20,7 @@ public class MyDataGUI extends JFrame implements ActionListener
 	JLabel label1, label2;
 	JFrame frame;
 	int year;
+	String area;
 	String options = "National";
 		
 	//methods
@@ -50,7 +51,7 @@ public class MyDataGUI extends JFrame implements ActionListener
 		label1 = new JLabel("Year:");
 		panel2.add(label1);
 		
-		year_entry = new JTextField(" 1976 - 2015 ");
+		year_entry = new JTextField("1976 - 2015");
 		panel2.add(year_entry);
 		
 		//specify area
@@ -61,7 +62,7 @@ public class MyDataGUI extends JFrame implements ActionListener
 		label2 = new JLabel("Area:");
 		panel3.add(label2);
 		
-		area_entry = new JTextField(" National, Dublin, Cork, Galway, Limerick, Other ");
+		area_entry = new JTextField("National, Dublin, Cork, Galway, Limerick, Other");
 		panel3.add(area_entry);
 		
 		//confirm entries
@@ -81,17 +82,16 @@ public class MyDataGUI extends JFrame implements ActionListener
 		{
 			if(e.getSource() == button1)
 			{
-				
-				
+				JOptionPane.showMessageDialog(frame, "button 1 pressed");
 			}//end if 
 			
 			//error check
 			if(e.getSource() == button2)
 			{
 				year = Integer.parseInt(year_entry.getText()); //year
-				boolean areEqual = area_entry.equals(options); //area
+				area = area_entry.getText(); //area
 				
-				if(areEqual)
+				if(area.equals("National") == true)
 				{
 					JOptionPane.showMessageDialog(frame, "Yes");
 				}
