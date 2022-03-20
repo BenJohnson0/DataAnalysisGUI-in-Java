@@ -10,3 +10,6 @@ Optional Functionality: . . . . . .
 If I had more time for this project, I would add . . . . . 
 
 Video demonstration: (url)
+
+Inspiration taken: 
+https://stackoverflow.com/questions/32277771/how-to-check-if-an-array-contains-a-particular-word-in-a-string-and-get-it
