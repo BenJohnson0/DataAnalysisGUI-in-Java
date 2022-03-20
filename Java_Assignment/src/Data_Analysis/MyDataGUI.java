@@ -1,3 +1,13 @@
+//
+//  Ben Johnson C20316733 
+//  Java assignment started Thursday ‎10 ‎March ‎2022, ‏‎15:00
+//
+//  Program designed to display facts and pieces
+//  of data from a dataset using user input from
+//  a GUI. SQL commands are used to retrieve the
+//  data from a database.
+//
+
 package Data_Analysis;
 
 import java.awt.FlowLayout;
@@ -15,95 +25,113 @@ public class MyDataGUI extends JFrame implements ActionListener
 {
 	//attributes
 	JTextField year_entry, area_entry;
-	JButton button1, button2, button3;
-	JPanel panel1, panel2, panel3, panel4;
-	JLabel label1, label2;
+	JButton randomFactButton, displayButton;
+	JPanel randomFactPanel, yearPanel, areaPanel, displayPanel;
+	JLabel yearLabel, areaLabel;
 	JFrame frame;
+	
+	boolean flag = false;
+	
 	int year;
+	int index = 0;
+	
 	String area;
-	String options = "National";
+	public static final String[] regions = new String[] {"National", "Dublin", "Cork", "Galway", "Limerick", "Other"};
 		
 	//methods
 	public MyDataGUI(String title)
 	{
+		//layout
 		super(title);
 		setVisible(true);
 		setSize(700, 500);
 		setLayout(new FlowLayout());
 		
-		//JFrame frame = new JFrame();
 		
-		//generate random fact
-		panel1 = new JPanel();
-		panel1.setLayout(new FlowLayout());
-		add(panel1);
+		//	 generate random fact	//
+		randomFactPanel = new JPanel();
+		randomFactPanel.setLayout(new FlowLayout());
+		add(randomFactPanel);
 		
-		button1 = new JButton("Display a random fact!");
-		panel1.add(button1);
-		button1.setToolTipText("This button will a random fact about this dataset");
-		button1.addActionListener(this);
+		randomFactButton = new JButton("Display a random fact!");
+		randomFactPanel.add(randomFactButton);
+		randomFactButton.setToolTipText("This button will a random fact about this dataset");
+		randomFactButton.addActionListener(this);
 		
-		//specify year
-		panel2 = new JPanel();
-		add(panel2);
-		panel2.setLayout(new FlowLayout());
 		
-		label1 = new JLabel("Year:");
-		panel2.add(label1);
+		//	 specify year	//
+		yearPanel = new JPanel();
+		add(yearPanel);
+		yearPanel.setLayout(new FlowLayout());
+		
+		yearLabel = new JLabel("Year:");
+		yearPanel.add(yearLabel);
 		
 		year_entry = new JTextField("1976 - 2015");
-		panel2.add(year_entry);
+		yearPanel.add(year_entry);
 		
-		//specify area
-		panel3 = new JPanel();
-		add(panel3);
-		panel3.setLayout(new FlowLayout());
+		//	 specify area	//
+		areaPanel = new JPanel();
+		add(areaPanel);
+		areaPanel.setLayout(new FlowLayout());
 		
-		label2 = new JLabel("Area:");
-		panel3.add(label2);
+		areaLabel = new JLabel("Area:");
+		areaPanel.add(areaLabel);
 		
 		area_entry = new JTextField("National, Dublin, Cork, Galway, Limerick, Other");
-		panel3.add(area_entry);
+		areaPanel.add(area_entry);
 		
-		//confirm entries
-		panel4 = new JPanel();
-		panel4.setLayout(new FlowLayout());
-		add(panel4);
+		//	 confirm entries	//
+		displayPanel = new JPanel();
+		displayPanel.setLayout(new FlowLayout());
+		add(displayPanel);
 		
-		button2 = new JButton("Display data");
-		panel4.add(button2);
-		button2.setToolTipText("Display data for specified terms");
-		button2.addActionListener(this);
-		
+		displayButton = new JButton("Display data");
+		displayPanel.add(displayButton);
+		displayButton.setToolTipText("Display data for specified terms");
+		displayButton.addActionListener(this);
 		}//close MyDataGUI constructor
+	
 
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
-			if(e.getSource() == button1)
+			if(e.getSource() == randomFactButton)
 			{
 				JOptionPane.showMessageDialog(frame, "button 1 pressed");
 			}//end if 
 			
-			//error check
-			if(e.getSource() == button2)
+			//error check for invalid entries
+			if(e.getSource() == displayButton)
 			{
-				year = Integer.parseInt(year_entry.getText()); //year
-				area = area_entry.getText(); //area
+				year = Integer.parseInt(year_entry.getText()); //year_entry input converted to text string
+				area = area_entry.getText(); //area_entry input converted to text string
 				
-				if(area.equals("National") == true)
+				for (int i=0; i<=regions.length-1; i++) 
+				{
+				    if (area.contains(regions[i])) 
+				    {
+				        flag = true;
+				        index = i;
+				    }//end if
+				}// end for
+				
+				
+				if( (year > 1976 && year < 2015) && (flag == true) )
 				{
 					JOptionPane.showMessageDialog(frame, "Yes");
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(frame, "No");
-				}
+				}//end if
 				
-				if(year < 1976 || year > 2015)
+				else if (year <= 1976 || year >= 2015)
 				{
-					JOptionPane.showMessageDialog(frame, "Select a year between 1976 and 2015!");
-				}//end if 
+					JOptionPane.showMessageDialog(frame, "Enter a year between 1976 and 2015!");
+				}//end else if
+				
+				else if (flag == false)
+				{
+					JOptionPane.showMessageDialog(frame, "Enter a valid region!");
+				}//end else if
+				 
 				
 			}//end if button2
 			
