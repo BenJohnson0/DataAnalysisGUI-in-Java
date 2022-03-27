@@ -24,10 +24,10 @@ import javax.swing.JTextField;
 public class MyDataGUI extends JFrame implements ActionListener
 {
 	//attributes
-	JTextField year_entry, area_entry;
-	JButton randomFactButton, displayButton;
-	JPanel randomFactPanel, yearPanel, areaPanel, displayPanel;
-	JLabel yearLabel, areaLabel;
+	JTextField year_entry, education_entry, sex_entry;
+	JButton displayButton;
+	JPanel MainPanel, yearPanel, areaPanel, displayPanel;
+	JLabel yearLabel, educationLabel, sexLabel;
 	JFrame frame;
 	
 	boolean flag = false;
@@ -39,6 +39,7 @@ public class MyDataGUI extends JFrame implements ActionListener
 	public static final String[] regions = new String[] {"National", "Dublin", "Cork", "Galway", "Limerick", "Other"};
 		
 	//methods
+	//MyDataGUI constructor
 	public MyDataGUI(String title)
 	{
 		//layout
@@ -47,39 +48,30 @@ public class MyDataGUI extends JFrame implements ActionListener
 		setSize(700, 500);
 		setLayout(new FlowLayout());
 		
-		
-		//	 generate random fact	//
-		randomFactPanel = new JPanel();
-		randomFactPanel.setLayout(new FlowLayout());
-		add(randomFactPanel);
-		
-		randomFactButton = new JButton("Display a random fact!");
-		randomFactPanel.add(randomFactButton);
-		randomFactButton.setToolTipText("This button will a random fact about this dataset");
-		randomFactButton.addActionListener(this);
-		
-		
-		//	 specify year	//
-		yearPanel = new JPanel();
-		add(yearPanel);
-		yearPanel.setLayout(new FlowLayout());
+		MainPanel = new JPanel();
+		MainPanel.setLayout(new FlowLayout());
+		add(MainPanel);
 		
 		yearLabel = new JLabel("Year:");
-		yearPanel.add(yearLabel);
+		MainPanel.add(yearLabel);
 		
-		year_entry = new JTextField("1976 - 2015");
-		yearPanel.add(year_entry);
+		year_entry = new JTextField("\t");
+		year_entry.setToolTipText("Select a year between 2009 and 2021");
+		MainPanel.add(year_entry);
 		
-		//	 specify area	//
-		areaPanel = new JPanel();
-		add(areaPanel);
-		areaPanel.setLayout(new FlowLayout());
+		sexLabel = new JLabel("Sex:");
+		MainPanel.add(sexLabel);
 		
-		areaLabel = new JLabel("Area:");
-		areaPanel.add(areaLabel);
+		sex_entry = new JTextField("\t");
+		sex_entry.setToolTipText("Select Male, Female or Both Sexes");
+		MainPanel.add(sex_entry);
 		
-		area_entry = new JTextField("National, Dublin, Cork, Galway, Limerick, Other");
-		areaPanel.add(area_entry);
+		educationLabel = new JLabel("Education Level:");
+		MainPanel.add(educationLabel);
+		
+		education_entry = new JTextField("\t");
+		education_entry.setToolTipText("Select Primary, Lower/Upper Secondary, Post leaving cert, Third level, Ordinary bachelor, Honours bachelor or Postgrad");
+		MainPanel.add(education_entry);
 		
 		//	 confirm entries	//
 		displayPanel = new JPanel();
@@ -96,16 +88,18 @@ public class MyDataGUI extends JFrame implements ActionListener
 		@Override
 		public void actionPerformed(ActionEvent e) 
 		{
+			/*
 			if(e.getSource() == randomFactButton)
 			{
 				JOptionPane.showMessageDialog(frame, "button 1 pressed");
 			}//end if 
+			*/
 			
 			//error check for invalid entries
 			if(e.getSource() == displayButton)
 			{
 				year = Integer.parseInt(year_entry.getText()); //year_entry input converted to text string
-				area = area_entry.getText(); //area_entry input converted to text string
+				//area = area_entry.getText(); //area_entry input converted to text string
 				
 				for (int i=0; i<=regions.length-1; i++) 
 				{
