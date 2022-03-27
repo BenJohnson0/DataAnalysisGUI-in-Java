@@ -1,9 +1,13 @@
 # JavaAssignment
 This java assignment demonstrates my understanding and use of various OOP concepts.
 
-Core Functionality:  build a tool that shows
+Core Functionality:  Build a tool that shows
 interesting facts from a dataset taken from 
-data.gov.ie.
+data.gov.ie. The dataset that I chose was 
+"Unemployment Rate of Persons 25-64 years".
+It contains data from 2009 to 2021 about
+gender, education level and the rate of 
+unemployment.
 
 Optional Functionality: . . . . . . 
 
