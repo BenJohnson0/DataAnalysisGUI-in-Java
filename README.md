@@ -20,8 +20,8 @@ queries.
 
 If I had more time for this project, I would add extensive error checking 
 as we are dealing with a database, it is very vunerable to SQL injection.
-I would also add some flexibilty, for examp,e your queries dont need to 
-be exact, possibly using all lowercase or wildcards. I would also add
+I would also add some flexibilty, for example your queries dont need to 
+be exact, possibly using wildcards. I would also add
 the JComboBox functionality as it is much easier for the user to
 input values that way.
 
