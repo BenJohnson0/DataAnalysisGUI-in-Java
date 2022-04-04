@@ -31,3 +31,4 @@ Inspiration taken:
 https://stackoverflow.com/questions/32277771/how-to-check-if-an-array-contains-a-particular-word-in-a-string-and-get-it
 https://stackhowto.com/how-to-populate-jtable-from-database/
 https://www.tutorialspoint.com/jfreechart/jfreechart_database_interface.htm
+http://www.java2s.com/Tutorials/Java/Java_Swing/1520__Java_Swing_Font.htm
