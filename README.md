@@ -16,7 +16,8 @@ Optional Functionality:  I have implemented a button
 which will save a random diagram to the user's
 PC. The diagram is one of: Bar chart, pie chart
 or line chart for a visual representation of the SQL
-queries. 
+queries. As I mentioned above, users can write their own 
+queries and dont need to rely on hard coded clauses. 
 
 If I had more time for this project, I would add extensive error checking 
 as we are dealing with a database, it is very vunerable to SQL injection.
