@@ -24,7 +24,9 @@ as we are dealing with a database, it is very vunerable to SQL injection.
 I would also add some flexibilty, for example your queries dont need to 
 be exact, possibly using wildcards. I would also add
 the JComboBox functionality as it is much easier for the user to
-input values that way.
+input values that way. I would definitely try and move everything
+to different classes but I struggled to do that while using 
+the actionListener.
 
 Video demonstration: (url)
 
