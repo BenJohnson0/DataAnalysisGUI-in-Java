@@ -28,6 +28,14 @@ input values that way. I would definitely try and move everything
 to different classes but I struggled to do that while using 
 the actionListener.
 
+As mentioned above, I struggled to break down my program into 
+classes while using the actionListener method. The classes that
+I have are: MyDataGUI_control, a control class that creates a new
+instance of my GUI, and MyDataGUI, extends JFrame implements
+ActionListener and holds all the GUI configurations and code 
+processes like handling button presses and error checking.
+
+
 Video demonstration: (url)
 
 Inspiration taken: 
