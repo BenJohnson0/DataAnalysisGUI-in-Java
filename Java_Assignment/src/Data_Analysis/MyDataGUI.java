@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.sql.*;
 
 import javax.swing.JButton;
+//import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -52,6 +53,8 @@ public class MyDataGUI extends JFrame implements ActionListener
 	JLabel yearLabel, educationLabel, sexLabel, queryLabel, SQLLabel;
 	JFrame frame;
 	JTable table;
+	//JComboBox yearList;
+	
 	
 	boolean education_flag = false;
 	boolean sex_flag = false;
@@ -65,11 +68,10 @@ public class MyDataGUI extends JFrame implements ActionListener
 	Font  f4  = new Font(Font.SANS_SERIF, Font.BOLD|Font.ITALIC, 15);
 	Font  f1  = new Font(Font.SERIF, Font.PLAIN,  15);
 	
-	/*for JButton
+	//for JButton
 	public static final String[] years = new String[] {"2009", "2010",  "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021"};
 	public static final String[] levels = new String[] {"Primary", "Lower Secondary", "Upper Secondary", "Leaving certificate", "Third level", "Higher certificate", "Ordinary bachelor", "Honours bachelor", "Postgradute"};
 	public static final String[] sexes = new String[] {"Male", "Female", "Both"};
-	*/
 	
 	//	MyDataGUI constructor
 	public MyDataGUI(String title)
@@ -97,12 +99,13 @@ public class MyDataGUI extends JFrame implements ActionListener
 		year_entry.setToolTipText("Select a year between 2009 and 2021");
 		MainPanel.add(year_entry);
 
-		/*	drop down menu for yearEntry
+		/*drop down menu for yearEntry
 		JComboBox yearList = new JComboBox(years);
 		yearList.setSelectedIndex(12);
 		yearList.addActionListener(this);
 		MainPanel.add(yearList);
 		*/
+		
 		
 		//	sex label
 		sexLabel = new JLabel("Sex:");
@@ -159,13 +162,13 @@ public class MyDataGUI extends JFrame implements ActionListener
 		SQLLabel.setFont(f1);
 		SQLPanel.add(SQLLabel);
 		
-		SQL_entry = new JTextField("select * from EducationData");
+		SQL_entry = new JTextField("select * from EducationData where");
 		SQL_entry.setFont(f1);
-		SQL_entry.setToolTipText("Create your own SQL query here");
+		SQL_entry.setToolTipText("Column names include d_Year, d_Sex, d_EducationLevel and d_Value");
 		SQLPanel.add(SQL_entry);
 		
 		SQLButton = new JButton("Submit");
-		SQLButton.setBackground(Color.pink);
+		SQLButton.setBackground(Color.orange);
 		SQLButton.setFont(f4);
 		SQLPanel.add(SQLButton);
 		SQLButton.setToolTipText("Submit your SQL query");
@@ -173,7 +176,7 @@ public class MyDataGUI extends JFrame implements ActionListener
 		
 		// random button
 		RandButton = new JButton("Random Diagram");
-		RandButton.setBackground(Color.LIGHT_GRAY);
+		RandButton.setBackground(Color.orange);
 		RandButton.setFont(f4);
 		SQLPanel.add(RandButton);
 		RandButton.setToolTipText("Click here to get a random diagram about the data!");
@@ -184,7 +187,6 @@ public class MyDataGUI extends JFrame implements ActionListener
 				
 		public void actionPerformed(ActionEvent e) 
 		{
-			
 			Object obj = e.getSource();
 			
 			//  button for user input SQL
@@ -274,19 +276,22 @@ public class MyDataGUI extends JFrame implements ActionListener
 			
 			
 			//  button for set queries
-			else if(obj == displayButton) {
+			if(obj == displayButton) {
+				
+			//error checking the sex entry
+			String str1 = "Male";
+			String str2 = "Female";
+			String str3 = "Both";
+			String str4 = "male";
+			String str5 = "female";
+			String str6 = "both";
+				
+			if(str1.equals(sex_entry.getText()) || str2.equals(sex_entry.getText()) || str3.equals(sex_entry.getText()) || str4.equals(sex_entry.getText()) || str5.equals(sex_entry.getText()) || str6.equals(sex_entry.getText())) {
 				
 			//  add single quotes to strings so they can be executed in SQL
 			quoted_sex_entry = "\'" + sex_entry.getText() + "\'";
 			quoted_education_entry = "\'" + education_entry.getText() + "\'";
 			
-			/*attempting error checking
-			if (sex_entry.getText() != "Male" || sex_entry.getText() != "Female" || sex_entry.getText() != "Both") {
-				JOptionPane.showMessageDialog(frame, "Enter Male, Female or Both!");	
-				System.out.println (sex_entry.getText());
-				System.exit(1);
-			*/
-		
 			//  Load Driver
 			try
 			{
@@ -336,6 +341,12 @@ public class MyDataGUI extends JFrame implements ActionListener
 					System.err.print("SQLException: ");
 					System.err.println(g.getMessage());
 				}//  close catch
+			
+			}// close if
+			
+			else {
+				JOptionPane.showMessageDialog(frame, "Invalid entry, try again.");
+			}
 
 			}//  close displayButton
 			
@@ -512,4 +523,3 @@ public class MyDataGUI extends JFrame implements ActionListener
 		}//  end actionPerformed
 
 }//  end class
-
