@@ -36,7 +36,7 @@ ActionListener and holds all the GUI configurations and code
 processes like handling button presses and error checking.
 
 
-Video demonstration: (url)
+Video demonstration: https://youtu.be/uuFgB9wiSa4
 
 Inspiration taken: 
 https://stackoverflow.com/questions/32277771/how-to-check-if-an-array-contains-a-particular-word-in-a-string-and-get-it
